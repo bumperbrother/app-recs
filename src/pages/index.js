@@ -3,9 +3,9 @@ import PyramidGraphic from '@/components/pyramid/PyramidGraphic';
 
 export default function Home() {
   return (
-    <Layout title="Accounting Firm's Hierarchy of Tech Needs">
+    <Layout>
       <div className="max-w-4xl mx-auto">
-        <div className="mb-8 text-center">
+        <div className="mb-24 text-center">
           <h1 className="text-4xl font-bold mb-4">Accounting Firm's Hierarchy of Tech Needs</h1>
           <p className="text-xl text-gray-300">
             Everything you need to build your tech stack in one graphic
@@ -14,7 +14,7 @@ export default function Home() {
         
         <PyramidGraphic />
         
-        <div className="mt-12 bg-gray-800 p-6 rounded-lg text-gray-200">
+        <div className="mt-[150px] bg-gray-800 p-6 rounded-lg text-gray-200">
           <h2 className="text-2xl font-bold mb-4 text-white">How to Use This Tool</h2>
           <p className="mb-4">
             This interactive guide helps accounting firms build their technology stack in a strategic way.
