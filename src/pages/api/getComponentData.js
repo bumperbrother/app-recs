@@ -1,5 +1,5 @@
 import { getRecommendations } from '@/utils/airtable';
-// import { mockRecommendations } from '@/utils/mockData';
+import { mockRecommendations } from '@/utils/mockData';
 
 export default async function handler(req, res) {
   // Only allow GET requests
@@ -14,17 +14,41 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Use actual Airtable data
-    const records = await getRecommendations(component);
-    
-    // Group recommendations by status
-    const data = {
-      'Top Recommendation': records.filter(item => item.status === 'Top Recommendation'),
-      'Good Enough': records.filter(item => item.status === 'Good Enough'),
-      'Don\'t Recommend': records.filter(item => item.status === 'Don\'t Recommend')
-    };
-    
-    return res.status(200).json(data);
+    // Try to use actual Airtable data
+    try {
+      const records = await getRecommendations(component);
+      
+      // Create a map to store records by status while preserving order
+      const statusMap = {
+        'Top Recommendation': [],
+        'Good Enough': [],
+        'Don\'t Recommend': []
+      };
+      
+      // First pass: collect records by status in their original order
+      for (const record of records) {
+        if (statusMap[record.status]) {
+          statusMap[record.status].push(record);
+        }
+      }
+      
+      // Create the final data structure
+      const data = statusMap;
+      
+      return res.status(200).json(data);
+    } catch (airtableError) {
+      console.warn('Airtable connection failed, using mock data:', airtableError.message);
+      
+      // Fallback to mock data if Airtable connection fails
+      if (mockRecommendations[component]) {
+        // Use mock data directly as it's already structured correctly
+        const data = mockRecommendations[component];
+        
+        return res.status(200).json(data);
+      } else {
+        throw new Error(`No mock data available for component: ${component}`);
+      }
+    }
   } catch (error) {
     console.error('API Error:', error);
     return res.status(500).json({ message: 'Error fetching component data', error: error.message });

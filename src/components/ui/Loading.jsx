@@ -10,8 +10,8 @@ export default function Loading({ size = 'medium', text = 'Loading...' }) {
   
   return (
     <div className="flex flex-col items-center justify-center py-8">
-      <div className={`animate-spin rounded-full ${spinnerSize} border-t-blue-500 border-b-blue-500 border-l-transparent border-r-transparent`}></div>
-      {text && <p className="mt-4 text-gray-600">{text}</p>}
+      <div className={`animate-spin rounded-full ${spinnerSize} border-t-blue-400 border-b-blue-400 border-l-transparent border-r-transparent`}></div>
+      {text && <p className="mt-4 text-gray-300">{text}</p>}
     </div>
   );
 }

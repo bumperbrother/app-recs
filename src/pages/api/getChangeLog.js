@@ -1,5 +1,5 @@
 import { getChangeLog } from '@/utils/airtable';
-// import { mockChangeLogs } from '@/utils/mockData';
+import { mockChangeLogs } from '@/utils/mockData';
 
 export default async function handler(req, res) {
   // Only allow GET requests
@@ -14,9 +14,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Use actual Airtable data
-    const changeLog = await getChangeLog(component);
-    return res.status(200).json(changeLog);
+    // Try to use actual Airtable data
+    try {
+      const changeLog = await getChangeLog(component);
+      return res.status(200).json(changeLog);
+    } catch (airtableError) {
+      console.warn('Airtable connection failed, using mock data:', airtableError.message);
+      
+      // Fallback to mock data if Airtable connection fails
+      if (mockChangeLogs[component]) {
+        return res.status(200).json(mockChangeLogs[component]);
+      } else {
+        throw new Error(`No mock data available for component: ${component}`);
+      }
+    }
   } catch (error) {
     console.error('API Error:', error);
     return res.status(500).json({ message: 'Error fetching change log', error: error.message });

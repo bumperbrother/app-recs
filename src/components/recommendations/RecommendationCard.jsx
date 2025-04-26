@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import Link from 'next/link';
+import { getLogoUrl, getYouTubeThumbnailUrl } from '@/utils/logoUtils';
 
 export default function RecommendationCard({ recommendation }) {
-  const { app, appMaker, status, why, url } = recommendation;
+  const { app, appMaker, status, why, url, youtubeId } = recommendation;
+  const [logoError, setLogoError] = useState(false);
+  const [thumbnailError, setThumbnailError] = useState(false);
+  const logoUrl = getLogoUrl(url);
+  const thumbnailUrl = getYouTubeThumbnailUrl(youtubeId);
 
   // Determine badge class based on status
   const getBadgeClass = () => {
@@ -20,27 +26,72 @@ export default function RecommendationCard({ recommendation }) {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition-shadow">
       <div className="flex justify-between items-start">
-        <div>
-          <h3 className="text-xl font-semibold">
-            {url ? (
-              <Link href={url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                {app}
-              </Link>
-            ) : (
-              app
+        <div className="flex items-start">
+          {logoUrl && !logoError && (
+            <div className="mr-3 flex-shrink-0">
+              <img 
+                src={logoUrl} 
+                alt={`${app} logo`} 
+                width={32} 
+                height={32} 
+                className="rounded-sm"
+                onError={() => setLogoError(true)}
+              />
+            </div>
+          )}
+          <div>
+            <h3 className="text-xl font-semibold">
+              {url ? (
+                <Link href={url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  {app}
+                </Link>
+              ) : (
+                app
+              )}
+            </h3>
+            {app !== appMaker && (
+              <p className="text-gray-600 mt-1">{appMaker}</p>
             )}
-          </h3>
-          <p className="text-gray-600 mt-1">{appMaker}</p>
+          </div>
         </div>
         <span className={getBadgeClass()}>
+          {status === 'Top Recommendation' && '👍 '}
+          {status === 'Good Enough' && '😐 '}
+          {status === 'Don\'t Recommend' && '👎 '}
           {status}
         </span>
       </div>
       
       <div className="mt-4">
-        <h4 className="font-medium text-gray-800 mb-2">Why:</h4>
         <p className="text-gray-700">{why}</p>
       </div>
+      
+      {youtubeId && thumbnailUrl && !thumbnailError && (
+        <div className="mt-4">
+          <a 
+            href={`https://www.youtube.com/watch?v=${youtubeId}`} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block relative"
+          >
+            <div className="relative">
+              <img 
+                src={thumbnailUrl} 
+                alt={`${app} video thumbnail`} 
+                className="w-3/4 mx-auto rounded-md shadow-sm hover:shadow-md transition-shadow"
+                onError={() => setThumbnailError(true)}
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-red-600 text-white rounded-full p-3 opacity-80">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      )}
     </div>
   );
 }

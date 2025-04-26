@@ -12,7 +12,8 @@ export const mockRecommendations = {
         appMaker: 'Thomson Reuters',
         status: 'Top Recommendation',
         why: 'Comprehensive features, excellent integration with other Thomson Reuters products, and robust support.',
-        url: 'https://tax.thomsonreuters.com/us/en/cs-professional-suite/ultratax-cs'
+        url: 'https://tax.thomsonreuters.com/us/en/cs-professional-suite/ultratax-cs',
+        youtubeId: 'dQw4w9WgXcQ' // Example YouTube video ID
       }
     ],
     'Good Enough': [
@@ -208,7 +209,8 @@ export const mockRecommendations = {
         appMaker: 'OpenAI',
         status: 'Top Recommendation',
         why: 'Excellent AI assistant for various tasks including content creation and research.',
-        url: 'https://chat.openai.com/'
+        url: 'https://chat.openai.com/',
+        youtubeId: 'V5HA-DHSvJo' // Example YouTube video ID for ChatGPT
       }
     ],
     'Good Enough': [

@@ -99,7 +99,7 @@ export default function ComponentPage() {
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">{COMPONENT_NAME_MAP[component]}</h1>
-          <p className="text-gray-600">{COMPONENT_DESCRIPTIONS[component]}</p>
+          <p className="text-gray-300">{COMPONENT_DESCRIPTIONS[component]}</p>
         </div>
 
         {/* Top Recommendations */}
@@ -110,7 +110,7 @@ export default function ComponentPage() {
               <RecommendationCard key={rec.id} recommendation={rec} />
             ))
           ) : (
-            <p className="text-gray-500 italic">No top recommendations available.</p>
+            <p className="text-gray-400 italic">No top recommendations available.</p>
           )}
         </section>
 
@@ -122,7 +122,7 @@ export default function ComponentPage() {
               <RecommendationCard key={rec.id} recommendation={rec} />
             ))
           ) : (
-            <p className="text-gray-500 italic">No "good enough" recommendations available.</p>
+            <p className="text-gray-400 italic">No "good enough" recommendations available.</p>
           )}
         </section>
 
@@ -134,7 +134,7 @@ export default function ComponentPage() {
               <RecommendationCard key={rec.id} recommendation={rec} />
             ))
           ) : (
-            <p className="text-gray-500 italic">No "don't recommend" entries available.</p>
+            <p className="text-gray-400 italic">No "don't recommend" entries available.</p>
           )}
         </section>
 

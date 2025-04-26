@@ -30,7 +30,10 @@ export async function getRecommendations(component) {
   }
   
   try {
-    const records = await base(tableName).select().all();
+    // Explicitly use the 'Grid view' (default view in Airtable) to ensure we get the same sort order
+    const records = await base(tableName).select({
+      view: 'Grid view'
+    }).all();
     
     return records.map(record => ({
       id: record.id,
@@ -39,6 +42,7 @@ export async function getRecommendations(component) {
       status: record.get('Status'),
       why: record.get('Why'),
       url: record.get('URL'),
+      youtubeId: record.get('YouTube Video ID'), // New field for YouTube videos
       createdTime: record.get('Created Time'),
       modifiedTime: record.get('Modified Time')
     }));

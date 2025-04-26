@@ -2,32 +2,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 export default function Layout({ children, title, component }) {
-  // Get background color based on component
-  const getBgColor = () => {
-    if (!component) return 'bg-gray-100';
-    
-    switch (component) {
-      case 'toppings':
-        return 'bg-toppings bg-opacity-20';
-      case 'service-line':
-        return 'bg-service-line bg-opacity-20';
-      case 'engagement':
-        return 'bg-engagement bg-opacity-20';
-      case 'tax-workflow':
-      case 'close-automation':
-        return 'bg-tax-workflow bg-opacity-20';
-      case 'practice-management':
-        return 'bg-practice-management bg-opacity-20';
-      case 'tax-preparation':
-      case 'ledger':
-        return 'bg-tax-preparation bg-opacity-20';
-      default:
-        return 'bg-gray-100';
-    }
-  };
+  // We're no longer using component-specific background colors
+  // All pages will use the same background color as the home page
 
   return (
-    <div className={`min-h-screen bg-gray-900 text-white ${getBgColor()}`}>
+    <div className="min-h-screen bg-gray-900 text-white">
       <Head>
         <title>{title ? `${title} | Accounting Tech Stack` : 'Accounting Tech Stack'}</title>
         <meta name="description" content="Accounting Firm's Hierarchy of Tech Needs" />
@@ -49,7 +28,7 @@ export default function Layout({ children, title, component }) {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        {title && (
+        {title && !component && (
           <h1 className="text-3xl font-bold mb-6">{title}</h1>
         )}
         {children}
