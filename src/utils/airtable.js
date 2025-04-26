@@ -1,4 +1,5 @@
 import Airtable from 'airtable';
+import { formatRichText } from './formatters';
 
 // Initialize Airtable with API key
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
@@ -14,7 +15,8 @@ const componentToTableMap = {
   'close-automation': 'Close Automation',
   'engagement': 'Engagement',
   'service-line': 'Service Line',
-  'toppings': 'Toppings'
+  'toppings': 'Toppings',
+  'faq': 'FAQ' // New mapping for FAQ table
 };
 
 /**
@@ -40,7 +42,7 @@ export async function getRecommendations(component) {
       app: record.get('App'),
       appMaker: record.get('App Maker'),
       status: record.get('Status'),
-      why: record.get('Why'),
+      why: formatRichText(record.get('Why')),
       url: record.get('URL'),
       youtubeId: record.get('YouTube Video ID'), // New field for YouTube videos
       createdTime: record.get('Created Time'),
@@ -84,4 +86,32 @@ export async function getAllComponentsData() {
   }
   
   return data;
+}
+
+/**
+ * Get FAQs from Airtable
+ * @returns {Promise<Array>} - Array of FAQ objects
+ */
+export async function getFAQs() {
+  try {
+    // Explicitly use the 'Grid view' (default view in Airtable) to ensure we get the same sort order
+    const records = await base('FAQ').select({
+      view: 'Grid view'
+    }).all();
+    
+    return records.map(record => {
+      return {
+        id: record.id,
+        question: record.get('Question'),
+        answer: formatRichText(record.get('Answer')),
+        category: record.get('Category'), // Optional: for grouping FAQs
+        order: record.get('Order'), // Optional: for custom sorting
+        createdTime: record.get('Created Time'),
+        modifiedTime: record.get('Modified Time')
+      };
+    });
+  } catch (error) {
+    console.error('Error fetching FAQs:', error);
+    throw error;
+  }
 }

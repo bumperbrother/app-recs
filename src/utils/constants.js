@@ -54,7 +54,8 @@ export const RECOMMENDATION_STATUS = {
  */
 export const API_ENDPOINTS = {
   GET_COMPONENT_DATA: '/api/getComponentData',
-  GET_CHANGE_LOG: '/api/getChangeLog'
+  GET_CHANGE_LOG: '/api/getChangeLog',
+  GET_FAQS: '/api/getFAQs'
 };
 
 /**

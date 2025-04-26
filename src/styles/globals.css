@@ -32,4 +32,85 @@ body {
   .pyramid-section-group {
     @apply cursor-pointer transition-all duration-200 ease-in-out hover:filter hover:brightness-125;
   }
+  
+  /* Rich text styling */
+  .text-gray-700 a, .text-gray-300 a {
+    @apply text-blue-500 underline hover:text-blue-600;
+  }
+  
+  .text-gray-700 ul, .text-gray-300 ul {
+    @apply list-disc pl-6 my-2;
+  }
+  
+  .text-gray-700 ol, .text-gray-300 ol {
+    @apply list-decimal pl-6 my-2;
+  }
+  
+  .text-gray-700 p, .text-gray-300 p {
+    @apply mb-2;
+  }
+  
+  .text-gray-700 strong, .text-gray-300 strong {
+    @apply font-bold;
+  }
+  
+  .text-gray-700 em, .text-gray-300 em {
+    @apply italic;
+  }
+  
+  .text-gray-700 h1, .text-gray-300 h1 {
+    @apply text-2xl font-bold my-3;
+  }
+  
+  .text-gray-700 h2, .text-gray-300 h2 {
+    @apply text-xl font-bold my-2;
+  }
+  
+  .text-gray-700 h3, .text-gray-300 h3 {
+    @apply text-lg font-bold my-2;
+  }
+  
+  .text-gray-700 h4, .text-gray-300 h4 {
+    @apply text-base font-bold my-2;
+  }
+  
+  .text-gray-700 h5, .text-gray-300 h5 {
+    @apply text-sm font-bold my-2;
+  }
+  
+  .text-gray-700 h6, .text-gray-300 h6 {
+    @apply text-xs font-bold my-2;
+  }
+  
+  .text-gray-700 blockquote, .text-gray-300 blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic my-2;
+  }
+  
+  .text-gray-700 code, .text-gray-300 code {
+    @apply bg-gray-100 dark:bg-gray-700 px-1 py-0.5 rounded text-sm font-mono;
+  }
+  
+  .text-gray-700 pre, .text-gray-300 pre {
+    @apply bg-gray-100 dark:bg-gray-700 p-3 rounded my-2 overflow-x-auto;
+  }
+  
+  .text-gray-700 pre code, .text-gray-300 pre code {
+    @apply bg-transparent p-0 text-sm font-mono;
+  }
+  
+  .text-gray-700 del, .text-gray-300 del {
+    @apply line-through;
+  }
+  
+  .text-gray-700 .checkbox, .text-gray-300 .checkbox {
+    @apply flex items-start my-1;
+  }
+  
+  .text-gray-700 .checkbox input, .text-gray-300 .checkbox input {
+    @apply mr-2 mt-1;
+  }
+  
+  .text-gray-700 .checkbox.checked, .text-gray-300 .checkbox.checked {
+    @apply text-gray-500 dark:text-gray-400;
+  }
 }

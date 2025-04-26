@@ -11,7 +11,7 @@ export const mockRecommendations = {
         app: 'UltraTax CS',
         appMaker: 'Thomson Reuters',
         status: 'Top Recommendation',
-        why: 'Comprehensive features, excellent integration with other Thomson Reuters products, and robust support.',
+        why: '<p><strong>Comprehensive features</strong>, excellent integration with other Thomson Reuters products, and robust support.</p><p>Key benefits include:</p><ul><li>Streamlined tax preparation workflow</li><li>Automatic form population</li><li>Integrated e-filing</li></ul><p>Learn more about their <a href="https://tax.thomsonreuters.com/us/en/cs-professional-suite/ultratax-cs/features">features here</a>.</p><p>Watch their">https://youtu.be/dQw4w9WgXcQ">their tutorial video for more information.</p>',
         url: 'https://tax.thomsonreuters.com/us/en/cs-professional-suite/ultratax-cs',
         youtubeId: 'dQw4w9WgXcQ' // Example YouTube video ID
       }
@@ -52,7 +52,7 @@ export const mockRecommendations = {
         app: 'QuickBooks Online',
         appMaker: 'Intuit',
         status: 'Top Recommendation',
-        why: 'Industry standard with excellent integration capabilities and wide adoption.',
+        why: '<p>Industry standard with <strong>excellent integration capabilities</strong> and wide adoption.</p><p>Benefits:</p><ol><li>Cloud-based accessibility</li><li>Robust reporting</li><li>Large ecosystem of apps and add-ons</li></ol><p>Perfect for <em>small to medium-sized</em> accounting firms.</p>',
         url: 'https://quickbooks.intuit.com/'
       }
     ],
@@ -84,7 +84,7 @@ export const mockRecommendations = {
         app: 'Karbon',
         appMaker: 'Karbon',
         status: 'Top Recommendation',
-        why: 'Excellent workflow management, team collaboration, and client communication features.',
+        why: '<p>Excellent workflow management, team collaboration, and client communication features.</p><p>Karbon provides:</p><ul><li>Centralized client information</li><li>Task management with accountability</li><li>Email integration</li><li>Document management</li></ul><p>Learn more about their <a href="https://karbonhq.com/features/">features here</a>.</p>',
         url: 'https://karbonhq.com/'
       }
     ],
@@ -300,3 +300,52 @@ export const mockChangeLogs = {
     }
   ]
 };
+
+// Mock FAQ data
+export const mockFAQs = [
+  {
+    id: 'faq1',
+    question: 'What is the Accounting Tech Stack?',
+    answer: '<p>The <strong>Accounting Tech Stack</strong> is an interactive guide that helps accounting firms build their technology stack in a strategic way. It presents software recommendations in a hierarchical pyramid, with the most fundamental tools at the bottom.</p><p>Our goal is to provide clear, actionable advice for firms of all sizes. Visit our my">https://www.rlz.io/">my community for more information.</p>',
+    category: 'General',
+    order: 1,
+    createdTime: '2025-03-01T10:00:00',
+    modifiedTime: '2025-03-01T10:00:00'
+  },
+  {
+    id: 'faq2',
+    question: 'How are the recommendations determined?',
+    answer: '<p>Our recommendations are based on:</p><ul><li>Extensive research</li><li>User feedback</li><li>Industry best practices</li></ul><p>We evaluate software based on features, usability, integration capabilities, pricing, and support.</p>',
+    category: 'Recommendations',
+    order: 2,
+    createdTime: '2025-03-01T10:00:00',
+    modifiedTime: '2025-03-01T10:00:00'
+  },
+  {
+    id: 'faq3',
+    question: 'How often are recommendations updated?',
+    answer: '<p>We review and update our recommendations regularly as:</p><ol><li>New software becomes available</li><li>Existing tools evolve</li><li>Industry needs change</li></ol><p>You can see the last update date for each recommendation in the <em>change log</em> at the bottom of each component page.</p>',
+    category: 'Recommendations',
+    order: 3,
+    createdTime: '2025-03-01T10:00:00',
+    modifiedTime: '2025-03-01T10:00:00'
+  },
+  {
+    id: 'faq4',
+    question: 'What does "Good Enough" mean?',
+    answer: '<p>"<strong>Good Enough</strong>" indicates that while the software may not be our top recommendation, it still provides adequate functionality and can be a suitable choice for certain firms depending on their specific needs, budget constraints, or existing technology ecosystem.</p><p>These tools often have a good balance of <a href="#">features and pricing</a>.</p>',
+    category: 'Recommendations',
+    order: 4,
+    createdTime: '2025-03-01T10:00:00',
+    modifiedTime: '2025-03-01T10:00:00'
+  },
+  {
+    id: 'faq5',
+    question: 'Why is software listed in "Don\'t Recommend"?',
+    answer: '<p>Software in the "<strong>Don\'t Recommend</strong>" category has significant limitations, including:</p><ul><li>Poor user experience</li><li>Inadequate support</li><li>Missing critical features</li><li>Reliability issues</li></ul><p>We include these to help firms avoid potential pitfalls.</p>',
+    category: 'Recommendations',
+    order: 5,
+    createdTime: '2025-03-01T10:00:00',
+    modifiedTime: '2025-03-01T10:00:00'
+  }
+];

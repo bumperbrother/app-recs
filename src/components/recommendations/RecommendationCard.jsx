@@ -63,7 +63,7 @@ export default function RecommendationCard({ recommendation }) {
       </div>
       
       <div className="mt-4">
-        <p className="text-gray-700">{why}</p>
+        <div className="text-gray-700" dangerouslySetInnerHTML={{ __html: why || '' }}></div>
       </div>
       
       {youtubeId && thumbnailUrl && !thumbnailError && (

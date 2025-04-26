@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       if (mockChangeLogs[component]) {
         return res.status(200).json(mockChangeLogs[component]);
       } else {
-        throw new Error(`No mock data available for component: ${component}`);
+        throw new Error(`No mock change log available for component: ${component}`);
       }
     }
   } catch (error) {
