@@ -1,0 +1,17 @@
+# Favicon Placeholder
+
+This file serves as a placeholder for the favicon.ico file that should be placed in this directory.
+
+## How to Add a Favicon
+
+1. Create a 16x16 or 32x32 pixel icon image
+2. Convert it to .ico format using an online converter or image editing software
+3. Name it "favicon.ico" and place it in this directory
+4. Delete this placeholder file
+
+## Quick Solution
+
+You can also use a service like favicon.io to generate a favicon from text, an image, or an emoji:
+https://favicon.io/
+
+Once generated, download the favicon.ico file and place it in this directory.
