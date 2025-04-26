@@ -27,7 +27,7 @@ export default function Layout({ children, title, component }) {
   };
 
   return (
-    <div className={`min-h-screen ${getBgColor()}`}>
+    <div className={`min-h-screen bg-gray-900 text-white ${getBgColor()}`}>
       <Head>
         <title>{title ? `${title} | Accounting Tech Stack` : 'Accounting Tech Stack'}</title>
         <meta name="description" content="Accounting Firm's Hierarchy of Tech Needs" />
