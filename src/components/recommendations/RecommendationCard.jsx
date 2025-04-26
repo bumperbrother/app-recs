@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getLogoUrl, getYouTubeThumbnailUrl } from '@/utils/logoUtils';
 
 export default function RecommendationCard({ recommendation }) {
-  const { app, appMaker, status, why, url, youtubeId } = recommendation;
+  const { app, appMaker, status, why, url, youtubeId, categories } = recommendation;
   const [logoError, setLogoError] = useState(false);
   const [thumbnailError, setThumbnailError] = useState(false);
   const logoUrl = getLogoUrl(url);
@@ -65,6 +65,19 @@ export default function RecommendationCard({ recommendation }) {
       <div className="mt-4">
         <div className="text-gray-700" dangerouslySetInnerHTML={{ __html: why || '' }}></div>
       </div>
+      
+      {categories && categories.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {categories.map((category, index) => (
+            <span 
+              key={index} 
+              className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full"
+            >
+              {category}
+            </span>
+          ))}
+        </div>
+      )}
       
       {youtubeId && thumbnailUrl && !thumbnailError && (
         <div className="mt-4">

@@ -210,7 +210,8 @@ export const mockRecommendations = {
         status: 'Top Recommendation',
         why: 'Excellent AI assistant for various tasks including content creation and research.',
         url: 'https://chat.openai.com/',
-        youtubeId: 'V5HA-DHSvJo' // Example YouTube video ID for ChatGPT
+        youtubeId: 'V5HA-DHSvJo', // Example YouTube video ID for ChatGPT
+        categories: ['AI Assistant', 'Content Creation']
       }
     ],
     'Good Enough': [
@@ -220,7 +221,8 @@ export const mockRecommendations = {
         appMaker: 'Zapier',
         status: 'Good Enough',
         why: 'Good automation tool but can get expensive with many zaps.',
-        url: 'https://zapier.com/'
+        url: 'https://zapier.com/',
+        categories: ['Automation', 'Integration']
       }
     ],
     'Don\'t Recommend': []

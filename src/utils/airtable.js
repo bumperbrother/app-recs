@@ -37,17 +37,27 @@ export async function getRecommendations(component) {
       view: 'Grid view'
     }).all();
     
-    return records.map(record => ({
-      id: record.id,
-      app: record.get('App'),
-      appMaker: record.get('App Maker'),
-      status: record.get('Status'),
-      why: formatRichText(record.get('Why')),
-      url: record.get('URL'),
-      youtubeId: record.get('YouTube Video ID'), // New field for YouTube videos
-      createdTime: record.get('Created Time'),
-      modifiedTime: record.get('Modified Time')
-    }));
+    return records.map(record => {
+      // Base recommendation object
+      const recommendation = {
+        id: record.id,
+        app: record.get('App'),
+        appMaker: record.get('App Maker'),
+        status: record.get('Status'),
+        why: formatRichText(record.get('Why')),
+        url: record.get('URL'),
+        youtubeId: record.get('YouTube Video ID'),
+        createdTime: record.get('Created Time'),
+        modifiedTime: record.get('Modified Time')
+      };
+      
+      // Add categories for Service Line and Toppings components
+      if (component === 'service-line' || component === 'toppings') {
+        recommendation.categories = record.get('Category') || [];
+      }
+      
+      return recommendation;
+    });
   } catch (error) {
     console.error(`Error fetching ${component} recommendations:`, error);
     throw error;
