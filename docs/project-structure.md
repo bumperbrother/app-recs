@@ -18,7 +18,7 @@ app-recs/
 │   ├── context/              # React context providers
 │   ├── hooks/                # Custom React hooks
 │   ├── pages/                # Next.js pages
-│   │   ├── api/              # API routes
+│   │   ├── api/              # API routes (Next.js serverless functions)
 │   │   └── ...               # Page components
 │   ├── styles/               # CSS styles
 │   ├── types/                # TypeScript types
@@ -55,7 +55,7 @@ app-recs/
   - **[component].js**: Dynamic route for component details
   - **404.js**: Custom 404 page
   - **_app.js**: Next.js app wrapper
-  - **api/**: API routes
+  - **api/**: API routes (Next.js serverless functions)
     - **getComponentData.js**: API route for component data
     - **getChangeLog.js**: API route for change log
 
